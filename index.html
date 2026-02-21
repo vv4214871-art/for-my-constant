@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Constant</title>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime&family=Dancing+Script:wght@700&family=Montserrat:wght@300;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0b0b0b;
+            --text-color: #e0e0e0;
+            --accent-color: #ff4d4d;
+            --coder-blue: #00f2ff;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Montserrat', sans-serif;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        .slide {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 40px;
+            box-sizing: border-box;
+        }
+
+        /* Hero / Start Screen */
+        #hero {
+            background: radial-gradient(circle, #1a1a1a 0%, #0b0b0b 100%);
+        }
+
+        .start-btn {
+            margin-top: 30px;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            font-family: 'Montserrat', sans-serif;
+            background: transparent;
+            color: var(--accent-color);
+            border: 2px solid var(--accent-color);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-radius: 50px;
+        }
+
+        .start-btn:hover {
+            background: var(--accent-color);
+            color: white;
+            box-shadow: 0 0 20px var(--accent-color);
+        }
+
+        /* Typewriter Styling */
+        .typewriter {
+            font-family: 'Courier Prime', monospace;
+            font-size: 1.6rem;
+            line-height: 1.6;
+            max-width: 850px;
+            margin: 10px 0;
+        }
+
+        .title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4.5rem;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+        }
+
+        .highlight {
+            color: var(--coder-blue);
+            font-weight: bold;
+        }
+
+        .floating {
+            animation: float 3s ease-in-out infinite;
+            font-size: 5rem;
+            margin-top: 20px;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* Responsive Tweak */
+        @media (max-width: 600px) {
+            .title { font-size: 3rem; }
+            .typewriter { font-size: 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <section id="hero" class="slide">
+        <h1 class="title" data-aos="zoom-in">hello !</h1>
+        <p style="font-size: 1.2rem; opacity: 0.8;">A little something for you...</p>
+        <button class="start-btn" onclick="scrollToNext()">Click to Start</button>
+    </section>
+
+    <section id="start" class="slide" data-aos="fade-up">
+        <p class="typewriter">Are you up for a Ride? Fun!</p>
+    </section>
+
+    <section class="slide" data-aos="fade-right">
+        <h2 class="typewriter">Have you seen this guy before?</h2>
+        <div class="floating">👤</div>
+    </section>
+
+    <section class="slide" data-aos="fade-left">
+        <p class="typewriter">
+            The world around me has been destroyed and rebuilt a thousand times over, 
+            yet amidst all the noise, one thing remains unchanged: <strong>him</strong>.
+        </p>
+    </section>
+
+    <section class="slide" data-aos="zoom-in-up">
+        <p class="typewriter">We started as kids in a classroom, where he sat right behind me.</p>
+        <p class="typewriter" style="margin-top: 20px;">
+            It’s funny how life works—years later, whenever I look back, he’s still there.
+        </p>
+    </section>
+
+    <section class="slide" data-aos="flip-up">
+        <p class="typewriter">He’s always had my back, <span class="highlight">steady and true</span>.</p>
+    </section>
+
+    <section class="slide" data-aos="fade-up">
+        <p class="typewriter">
+            My favorite <span class="highlight">gamer/coder</span> is now building a world 
+            where we are both the main characters, coding a life that fits us perfectly.
+        </p>
+    </section>
+
+    <section class="slide" data-aos="zoom-out-up">
+        <h1 class="title">Happy Birthday to my constant.</h1>
+        <p class="typewriter">Thank you for showing up, for every effort, and for choosing us every single day.</p>
+    </section>
+
+    <section id="final-slide" class="slide" data-aos="fade-in">
+        <h1 class="title" style="font-size: 6rem;">I love you</h1>
+        <div class="floating">❤️</div>
+    </section>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <script>
+        // Initialize Animations
+        AOS.init({ duration: 1200 });
+
+        // Scroll Function for Button
+        function scrollToNext() {
+            document.getElementById('start').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Confetti Logic for Final Slide
+        const finalSlide = document.getElementById('final-slide');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    confetti({
+                        particleCount: 200,
+                        spread: 90,
+                        origin: { y: 0.7 },
+                        colors: ['#ff4d4d', '#ffffff', '#00f2ff']
+                    });
+                }
+            });
+        }, { threshold: 0.5 });
+
+        observer.observe(finalSlide);
+    </script>
+</body>
+</html>
